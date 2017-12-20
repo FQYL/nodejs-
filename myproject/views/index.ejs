@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/bootstrap/js/jquery.cookie.js"></script>
+    <style>
+         html,body{width:100%;height:100%;}
+        body{background: url(../img/bg1.jpg) no-repeat;background-size:100% 100%}
+        .navbar{background: url(../img/bg3.jpg) no-repeat;background-size:100%}
+        .list-group .list-group-item:hover{cursor: pointer;background:#A6FFFF;}
+        .list-group .list-group-item a{text-decoration: none}
+    </style>
+  </head>
+  <body>
+    <!-- 引入头部文件 -->
+    <%- include("./header.ejs",{name:"个人后台系统",isShow:true})%>
+
+    <!-- 列表组 -->
+      <ul class="list-group" style="float:left;width:200px;">
+        <li class="list-group-item" style="background:#4DFFFF;"><a>用户分类</a></li>
+        <li class="list-group-item" style="display: block;height:100%;width:100%;"><a href="/">个人发表的文章</a></li>
+        <li class="list-group-item"><a href="/myself" class="introduce">个人介绍</a></li>
+        <li class="list-group-item"><a href="/myself" class="job">所在公司职务</a></li>
+        <li class="list-group-item"><a href="/myself" class="win">个人获奖情况</a></li>
+      </ul>
+    
+    <!-- 创建表格将内容 --> 
+    	<table class="table table-bordered" style="width:900px;float:left;margin-right:100px;">
+      <thead>
+        <tr >
+          <th style="width:300px;text-align: center">作者</th>
+          <th style="width:300px;text-align: center">点击查看文章详情</th>
+          <th style="width:300px;text-align: center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <%for(var i=0;i<list.length;i++){%>
+           <tr>
+           <td style="width:300px;text-align: center;"><%- list[i].author %></td>
+             <td style="width:300px;text-align: center"><a href="/detail?id=<%- list[i]._id%>"><%- list[i].title %></a></td>
+             <td style="width:300px;text-align: center">
+             	<a href="/article/fixed?id=<%- list[i]._id%>" style="float: left" class="btn btn-default btn-info btn-xs">修改文章</a>
+             	<a href="/article/delete?id=<%- list[i]._id%>" style="text-align:center" class="btn btn-default btn-danger btn-xs">删除文章</a>
+             	<a href="/comment?id=<%- list[i]._id%>" style="float: right" class="btn btn-default btn-success btn-xs">自我评论</a>
+             </td>
+           </tr>
+        <%}%>
+      </tbody>
+    </table>
+
+  </body>
+</html>
+<script>
+     
+$('.introduce').on('click',function(){
+  $.cookie('myself','introduce')
+})
+
+
+$('.job').on('click',function(){
+    $.cookie('myself','job')
+})
+  
+
+$('.win').on('click',function(){
+    $.cookie('myself','win')
+})    
+    
+</script>

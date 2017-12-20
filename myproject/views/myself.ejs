@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/bootstrap/js/jquery.cookie.js"></script>
+    <style>
+         html,body{width:100%;height:100%;}
+        body{background: url(../img/bg1.jpg) no-repeat;background-size:100% 100%}
+        .navbar{background: url(../img/bg3.jpg) no-repeat;background-size:100%}
+        .list-group .list-group-item:hover{background: #A6FFFF;cursor: pointer;}
+        .list-group .list-group-item a{text-decoration: none}
+        p{
+          font-size: 30px;
+          color:#9AFF02;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- 引入头部文件 -->
+    <%- include("./header.ejs",{name:"个人后台系统",isShow:true})%>
+
+    <!-- 列表组 -->
+      <ul class="list-group" style="float:left;width:200px;">
+        <li class="list-group-item" style="background:#4DFFFF;"><a>用户分类</a></li>
+        <li class="list-group-item" style="display: block;height:100%;width:100%;"><a href="/">个人发表的文章</a></li>
+        <li class="list-group-item"><a class="introduce" href="/myself">个人介绍</a></li>
+        <li class="list-group-item"><a class="job" href="/myself">所在公司职务</a></li>
+        <li class="list-group-item"><a class="win" href="/myself">个人获奖情况</a></li>
+      </ul>
+    
+    <!-- 动态创建人物介绍 -->
+      <%if(isShowI){%>
+        <p ><%- username%>介绍自己是：<%- message%></p>
+      <%}%>
+      
+      <%if(isShowJ){%>
+        <p ><%- username%>在我们公司是一个：<%- message%></p>
+      <%}%>
+        
+      <%if(isShowW){%>
+        <p><%- username%>获得的奖项有：<%- message%></p>
+      <%}%>
+
+
+
+  </body>
+</html>
+<script>
+     
+$('.introduce').on('click',function(){
+  $.cookie('myself','introduce')
+})
+
+
+$('.job').on('click',function(){
+    $.cookie('myself','job')
+})
+  
+
+$('.win').on('click',function(){
+    $.cookie('myself','win')
+})    
+    
+</script>

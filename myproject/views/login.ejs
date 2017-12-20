@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <style>
+        html,body{width:100%;height:100%;}
+        body{background: url(../img/bg2.jpg) no-repeat;background-size:100% 100%}
+        .jumbotron{background: url(../img/bg3.jpg) no-repeat;background-size:100%}
+        .navbar{background: url(../img/bg3.jpg) no-repeat;background-size:100%}
+    </style>
+  </head>
+  <body>
+    <!-- 引入头部文件 -->
+    <%- include("./header.ejs",{name:"登录页面",isShow:false})%>
+
+
+    <div class="container" style="padding-bottom:40px;">
+    	<form method="post" action="/login">
+    	  <div class="form-group">
+    	    <label for="exampleInputEmail1">请填写邮箱</label>
+    	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="邮箱" name="email">
+    	  </div>
+    	  <div class="form-group">
+    	    <label for="exampleInputPassword1">请填写密码</label>
+    	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码" name="password">
+    	  </div>
+    	  <button type="submit" class="btn btn-default btn-primary btn-info">点击登录</button>
+    	</form>
+
+    	<%if(isShow){%>
+    		<p style="color:red;">您的用户名和密码不匹配</p>
+    	<%}%>
+
+    </div>
+
+
+    <div class="container">
+    	<div class="jumbotron">
+    	  <h2>本网站是不是还可以，哈哈哈。。。</h2>
+    	  <p>本网站，是全世界最好最大的网站,是的你没有听错...</p>
+    	  <p><a class="btn btn-lg btn-info" href="/register" role="button">点击去注册</a></p>
+    	</div>
+    </div>
+
+
+  </body>
+</html>

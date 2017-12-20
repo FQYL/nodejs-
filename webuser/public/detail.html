@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+<script type="text/javascript" src="/bootstrap/js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+<script src="javascripts/detail.js"></script>
+<style type="text/css" media="screen">
+	html,body{width: 100%;height:100%;background: url(./images/bg3.jpg) no-repeat;background-size:100% 100%}
+	.navbar{background: url(./images/bg3.jpg) no-repeat;background-size:100% }
+	.jumbotron{background: url(./images/bg3.jpg) no-repeat;background-size:100%}
+	form{position: absolute;bottom:20px;left:20px;}
+	.main{width:100px;height:25px;background: 	#00FFFF;position: absolute;left:250px;bottom:20px;border-radius: 5px;cursor: pointer;text-align: center;line-height: 25px;color:#1E90FF;}
+	.main:hover{background: #00CED1;}
+</style>
+</head>
+<body>
+	<!-- 旅游详情页 -->
+	<nav class="navbar navbar-default" style="margin-bottom:0;">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#" style="color:#00FFFF;font-size: 25px;font-style: italic" >旅游详情页</a>
+	    </div> 
+	  </div>
+	</nav>
+
+
+	<!-- 巨幕 -->
+    <div class="jumbotron" style="padding-left:20px;margin-bottom: 0;">
+      <h2 style="font-style: italic;color:#7FFFD4;">带你感受不一样的风光</h2>
+      <p style='font-style: italic;font-size: 16px;color:#7FFFD4;'>&nbsp;&nbsp;&nbsp;&nbsp;我们这里有着最大，最全的旅游攻略，在这里足不出户就可以欣赏了解到世界各地的风土人情，瑰丽美景......</p>
+      <p><a class="btn btn-primary btn-info" href="http://localhost:3000/register" role="button">点击免费成会员</a></p>
+    </div>
+
+    <!-- 详情攻略 -->
+    <div class="jumbotron" style="padding-left:20px;height:601px;position:relative">
+      <h2 style="text-align: center;color:#1E90FF;" class="title"></h2>
+      <p style="text-align: center;color:#1E90FF;" class="author"></p>
+      <p style="color:#1E90FF;" class="content">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      <p style="font-size: 16px;margin-top: 30px;color:#7FFFD4;">评论区：--------------------</p>
+      <div class="discuss" style="height:282px;overflow: hidden">
+      	
+      </div>
+      <form action="/detail" method="post">
+      		<input type="hidden" name="id" value="" id="hidden">
+      		<input type="text" name="discuss" value="" placeholder="评论..." style="float: left;" id="val">
+      		<input type="submit" value="发表" style="float: left;" id="sub">
+      </form>
+      <div	class="main" >
+      		回首页
+      </div>
+    </div>
+
+</body>
+</html>
+<script>
+
+	
+	// 点击向页面添加内容
+	$("#sub").on("click",function(){
+	    $p=$("<p style='font-size:14px;'>").html("评论内容："+$("#val").val());
+		$(".discuss").prepend($p);
+    });
+	
+	
+
+	$(".main").on("click",function(){
+		window.location.href='http://localhost:8000/main.html';
+	})
+
+</script>
